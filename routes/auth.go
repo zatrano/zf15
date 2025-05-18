@@ -27,7 +27,7 @@ func registerAuthRoutes(app *fiber.App) {
 	authGroup.Post("/reset-password", middlewares.GuestMiddleware, requests.ValidateResetPasswordRequest, authHandler.ResetPassword)
 	authGroup.Get("/verify-email", middlewares.GuestMiddleware, authHandler.VerifyEmail)
 	authGroup.Get("/resend-verification", middlewares.GuestMiddleware, authHandler.ShowResendVerification)
-authGroup.Post("/resend-verification", middlewares.GuestMiddleware, authHandler.ResendVerification)
+	authGroup.Post("/resend-verification", middlewares.GuestMiddleware, requests.ValidateResendVerificationRequest, authHandler.ResendVerification)
 	authGroup.Get("/google/login", handlers.GoogleLogin)
 	authGroup.Get("/google/callback", handlers.GoogleCallback)
 }
